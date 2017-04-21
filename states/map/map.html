@@ -1,0 +1,36 @@
+<div class="map">
+    <div class="map__container" >
+        <div
+            class="map__map"
+            ng-show="showMap">
+            <ng-map
+                default-style="true"
+                center="[33.86, -118.40]"
+                styles="{{mapStyle}}">
+                <!-- <marker
+                    ng-repeat="p in farmerData"
+                    position="{{p.X}}, {{p.Y}"
+                    icon="{
+                            url:'assets/img/icons/carrot.png',
+                          }"></marker> -->
+                    <info-window id="myInfoWindow">
+                        <div ng-non-bindable>
+                            <p id="firstHeading" class="firstHeading">
+                                {{infoName}}
+                            </p>
+                            <p class="firstDescription">
+                                {{infoAddy1}}<br>{{infoAddy2}}
+                            </p>
+                        </div>
+                      </info-window>
+            </ng-map>
+        </div>
+        <div class="map__tip">
+            <img class="map__icon" src="assets/img/icons/{{icon}}.svg"/>
+            <h2>{{title}}</h2>
+            <p>{{info}}</p>
+            <p ng-show="url"><a href="{{url}}" target="_blank">{{url}}</p>
+            <p><a class="backButton" ui-sref="home">Go Back</a></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+{
+  "name": "jquery-unorphanize",
+  "version": "1.0.1",
+  "main": "unorphanize.jquery.js",
+  "ignore": [
+    ".gitattributes",
+    ".gitignore",
+    "Gruntfile.js",
+    "*.json",
+    "*.md",
+    "*.txt",
+    "*.html",
+    "mode_modules"
+  ],
+  "dependencies": {
+    "jquery": ">=1.10.2"
+  },
+  "devDependencies": {},
+  "homepage": "https://github.com/simeydotme/jquery-unorphanize",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.1",
+    "commit": "37ae5ffbc21a6ca4a5b91d9c5a178355cd96f940"
+  },
+  "_source": "https://github.com/simeydotme/jquery-unorphanize.git",
+  "_target": "1.0.1",
+  "_originalSource": "jquery-unorphanize"
+}

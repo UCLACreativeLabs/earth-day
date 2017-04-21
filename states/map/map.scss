@@ -1,0 +1,72 @@
+.map {
+    margin-top: 0px;
+
+    a {
+        color: #67458d;
+    }
+
+    a.backButton {
+        text-decoration: underline;
+        color: $black;
+    }
+}
+
+.map__container {
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 400px;
+
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+    }
+
+}
+
+.map__back {
+    position: absolute;
+    top:40px;
+    left:40px;
+}
+
+.map__map {
+    position: relative;
+    flex: 1 1 auto;
+    width: 60%;
+
+    @media (max-width: 768px) {
+        width: 100%
+    }
+}
+
+.map__tip {
+    position: relative;
+    flex: 1 1 auto;
+    width: 40%;
+    padding: 40px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        width: 100%
+    }
+}
+
+.map__icon {
+    width: 40px;
+}
+
+#myInfoWindow, .firstHeading {
+    font-family: Circular Std, Avenir, sans-serif !important;
+    font-size: 18px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.firstDescription {
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: center;
+}
