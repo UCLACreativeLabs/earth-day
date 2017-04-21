@@ -289,9 +289,9 @@ function initMap() {
       styles: mapStyle
     });
 
-    map.data.loadGeoJson('https://geohub.lacity.org/datasets/44546f03b92549e6b34574d9152af0fa_4.geojson');
-    map.data.loadGeoJson('https://geohub.lacity.org/datasets/230abc621b144dbc96cca83d65bd454d_0.geojson');
-    map.data.loadGeoJson('https://geohub.lacity.org/datasets/a050296610ee4cc7bea41e66196d9bb0_40.geojson?where=&geometry={"xmin":-13951254.333030073,"ymin":3820005.993082375,"xmax":-12385823.993750079,"ymax":4186903.7288511232,"spatialReference":{"wkid":102100,"latestWkid":3857}}');
+    map.data.loadGeoJson('parks.geojson');
+    map.data.loadGeoJson('bike.geojson');
+    map.data.loadGeoJson('farmers.geojson');
 
     map.data.setStyle(function(feature) {
       var iconStyle = {
