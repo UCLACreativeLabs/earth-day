@@ -1,136 +1,92 @@
 <!DOCTYPE html>
-<html
-    class="no-js"
-    lang="en"
-    data-ng-app="ua5App"
-    ng-strict-di="true"
-    data-ng-cloak
-    data-app>
-    <head>
-        <meta charset="utf-8">
-        <meta name="fragment" content="!">
-        <base href="/earth-day/">
-        <!-- @if PRODUCTION='false' -->
-        <script src="bower_components/angular/angular.js"></script>
-        <!-- @endif -->
-        <!-- @if TESTING='true' -->
-        <link
-            href="_build/assets/css/app.css"
-            rel="stylesheet"
-            type="text/css">
-        <!-- @endif -->
-        <!-- @if TESTING='false' -->
-        <link
-            href="assets/css/app.css"
-            rel="stylesheet"
-            type="text/css">
-        <!-- @endif -->
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <title ng-bind="ngMeta.title"></title>
-        <meta content="Base Angular">
-        <meta
-            name="description"
-            content="{{ ngMeta.description }}">
-        <meta
-            property="og:description"
-            content="{{ ngMeta.description }}">
-        <meta
-            property="og:image"
-            content="{{ ngMeta.image }}">
-        <meta
-            property="og:site_name"
-            content="Site Name">
-        <meta
-            property="og:url"
-            content="{{ ngMeta.url }}">
-        <meta
-            property="og:type"
-            content="website">
-        <meta
-            name="twitter:card"
-            content="summary_large_image">
-        <meta
-            name="twitter:title"
-            content="{{ ngMeta.title }}">
-        <meta
-            property="twitter:image:src"
-            content="{{ ngMeta.image }}">
-        <link
-            href="assets/img/favicon.png"
-            rel="icon"
-            type="image/png">
-        <script src="http://maps.google.com/maps/api/js"></script>
-    </head>
-    <body ng-class="pageClass">
-        <noscript>
-            <div class="noscript">
-                Please enable JavaScript on your browser or upgrade to <a href="http://www.google.com/chrome/" target="_blank">Google Chrome</a> to use Base Angular.
-            </div>
-        </noscript>
-        <div header></div>
+<html ng-app="clApp">
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/app.css">
+<head>
+	<title>Earth Day</title>
+	<script
+	  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+	<script src="http://maps.google.com/maps/api/js"></script>
+	<script src="ng-map.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+
+<div class="header" ui-sref="home">
+	<img src="assets/img/icons/title.svg">
+</div>
+
+<div id ="home "class="schedule fade" ng-show="active=='home'">
+	<div class="schedule__table">
         <div
-            ui-view
-            class="fade">
+            ng-click="goto('map', timeslot)"
+            class="schedule__timeslots"
+            ng-repeat="timeslot in timeslots">
+            <img src="assets/img/icons/{{timeslot.icon}}.svg">
+            <p>
+                {{timeslot.title}}
+            </p>
+            <p class="schedule__info">
+                <img src="assets/img/icons/warning.svg">
+                <img src="assets/img/icons/placeholder.svg" ng-if="timeslot.map">
+            </p>
         </div>
-        <div earth></div>
-        <!-- @if PRODUCTION='true' -->
-            <!-- @if TESTING='true' -->
-            <script src="_build/vendor.js"></script>
-            <script src="_build/app.js"></script>
-            <!-- @endif -->
-            <!-- @if TESTING='false' -->
-            <script src="vendor.js"></script>
-            <script src="app.js"></script>
-            <!-- @endif -->
-        <!-- @endif -->
-        <!-- @if PRODUCTION='false' -->
-        <!-- start bower_components -->
-        <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
-        <script src="bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min.js"></script>
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-        <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-        <script src="bower_components/angular-touch/angular-touch.min.js"></script>
-        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-        <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
-        <script src="bower_components/gsap/src/minified/TweenMax.min.js"></script>
-        <script src="bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
-        <script src="bower_components/underscore/underscore.js"></script>
-        <script src="bower_components/slick-carousel/slick/slick.min.js"></script>
-        <script src="bower_components/ngMeta/dist/ngMeta.min.js"></script>
-        <script src="bower_components/jquery-unorphanize/unorphanize.jquery.min.js"></script>
-        <script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
-        <script src="bower_components/modernizr/modernizr.js"></script>
-        <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
-        <!-- end bower_components -->
-        <script src="app.js"></script>
-        <!-- state scripts -->
-        <script src="states/home/home.js"></script>
-        <script src="states/map/map.js"></script>
-        <script src="states/about/about.js"></script>
-        <!-- end state scripts -->
-        <!-- component scripts -->
-        <script src="components/header/header.js"></script>
-        <script src="components/unorphanize/unorphanize.js"></script>
-        <script src="components/scroll-reveal/scroll-reveal.js"></script>
-        <script src="components/share-fb/share-fb.js"></script>
-        <script src="components/share-tw/share-tw.js"></script>
-        <script src="components/share-e/share-e.js"></script>
-        <script src="components/earth/earth.js"></script>
-        <script src="components/schedule/schedule.js"></script>
-        <!-- end component scripts -->
-        <!-- services scripts -->
-        <script src="services/preloader.js"></script>
-        <script src="services/popup.js"></script>
-        <!-- end services scripts -->
-        <!-- animations scripts -->
-        <script src="animations/fade.js"></script>
-        <script src="animations/fade-child.js"></script>
-        <!-- end animations scripts -->
-        <!-- @endif -->
-    </body>
+    </div>
+</div>
+
+<div id="map" class="map__parent fade" ng-show="active=='map'">
+	<div class="map">
+	    <div class="map__container" >
+	        <div
+	            class="map__map"
+	            ng-show="showMap">
+	            <ng-map
+	                default-style="true"
+	                center="[33.86, -118.40]"
+	                styles="{{mapStyle}}">
+	                    <info-window id="myInfoWindow">
+	                        <div ng-non-bindable>
+	                            <p id="firstHeading" class="firstHeading">
+	                                {{infoName}}
+	                            </p>
+	                            <p class="firstDescription">
+	                                {{infoAddy1}}<br>{{infoAddy2}}
+	                            </p>
+	                        </div>
+	                      </info-window>
+	            </ng-map>
+	        </div>
+	        <div class="map__tip">
+	            <img class="map__icon" src="assets/img/icons/{{icon}}.svg"/>
+	            <h2>{{title}}</h2>
+	            <p>{{info}}</p>
+	            <p ng-show="url"><a href="{{url}}" target="_blank">{{url}}</p>
+	            <p><a class="backButton" ng-click="goto('home')">Go Back</a></p>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+
+<div id="about" class="about fade" ng-show="active=='about'">
+	<h1>About the Project {{name}}</h1>
+    <p>This project is a collboration between the City of LA and <a href="http://uclacreatives.com" target="_blank">Creative Labs</a> at UCLA to celebrate Earth Day. It encourages the people of Los Angeles to keep LA thriving by showing them various initiatives by the city they can join. It also showcases some data collected by the LA City Open Data Initiative that shows the people how they can take a moment to enjoy the beautiful mother Earth. Hope you enjoy it! <u><a ng-click="goto('home')">Click here to go back to see tips</a></u></p>
+</div>
+
+<div class="earth">
+	<div
+        class="earth_elem"
+        ng-include="'assets/img/EARTHDAY.svg'"></div>
+</div>
+
+<div class="footer" ng-click="goto('about')">
+    About the project
+</div>
+
+
+</body>
 </html>
