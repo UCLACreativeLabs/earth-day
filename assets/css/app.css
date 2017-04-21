@@ -20,3 +20,8 @@ img,legend{border:0}.slick-list:focus,a:active,a:hover{outline:0}.slick-loading 
 .fade {
 	transition: all linear 500ms;
 }
+
+#map {
+	width: 100vw;
+	height: 100vh;
+}
