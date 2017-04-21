@@ -29,3 +29,7 @@ img,legend{border:0}.slick-list:focus,a:active,a:hover{outline:0}.slick-loading 
 #about {
 	margin-bottom: 400px;
 }
+
+.earth {
+	pointer-events: none;
+}

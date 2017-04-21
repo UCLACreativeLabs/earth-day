@@ -17,7 +17,7 @@ angular.module('clApp', ['ngMap', 'ngAnimate'])
             details: "Take advantage of LA's bikeshare program and bike to work/school.",
             map: true,
             icon: "car",
-            url: "https://bikeshare.metro.net/"
+            url: " https://bikeshare.metro.net/stations/"
         },
         {
             time: 8,
@@ -351,17 +351,18 @@ angular.module('clApp', ['ngMap', 'ngAnimate'])
         $scope.info = data.details;
         $scope.url = data.url;
         $scope.icon = data.icon;
+        $scope.showMap = data.map;
       }
 
 
       if(data && data.map) {
-        $scope.showMap = data.map;
         NgMap.getMap().then(function(map) {
           map.data.forEach(function (feature) {
             map.data.remove(feature);
           });
 
           if($scope.icon == "tree") {
+            $scope.source = "http://geohub.lacity.org/datasets/44546f03b92549e6b34574d9152af0fa_4";
             map.data.loadGeoJson('parks.geojson');
             map.data.setStyle(function(feature) {
               return {
@@ -379,6 +380,7 @@ angular.module('clApp', ['ngMap', 'ngAnimate'])
               map.showInfoWindow('myInfoWindow', event.latLng);
             });
           } else if($scope.icon == "car") {
+            $scope.source = "http://geohub.lacity.org/datasets/230abc621b144dbc96cca83d65bd454d_0";
             map.data.loadGeoJson('bike.geojson');
             map.data.setStyle(function(feature) {
               return {
@@ -391,6 +393,7 @@ angular.module('clApp', ['ngMap', 'ngAnimate'])
               };
             });
           } else {
+            $scope.source = "http://geohub.lacity.org/datasets/a050296610ee4cc7bea41e66196d9bb0_40";
             map.data.loadGeoJson('farmers.geojson');
             map.data.setStyle(function(feature) {
               return {
